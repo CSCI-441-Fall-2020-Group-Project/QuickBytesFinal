@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Customer Complaints - QuickBytes</title>
+    <link rel="stylesheet" href="{% static 'quickbytes/assets/bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
+    <link rel="stylesheet" href="{% static 'quickbytes/assets/fonts/fontawesome-all.min.css' %}">
+    <link rel="stylesheet" href="{% static 'quickbytes/assets/fonts/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'quickbytes/assets/fonts/ionicons.min.css' %}">
+    <link rel="stylesheet" href="{% static 'quickbytes/assets/fonts/fontawesome5-overrides.min.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+</head>
+
+<body id="page-top">
+    <div id="wrapper">
+        {% include 'customer/customer_navbar.html' %}
+        <div class="d-flex flex-column" id="content-wrapper">
+            <div id="content">
+                {% include 'customer/upper_nav.html' %}
+            <div class="container-fluid">
+                <div class="d-sm-flex justify-content-between align-items-center mb-4">
+                    <h3 class="text-dark mb-0">File a complaint</h3>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        
+                            <div class="form-row">
+                                <div class="col">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h4 class="card-title">Create Complaint</h4>
+                                            
+                                            {% load crispy_forms_tags %}
+            
+                                            {% block content %}
+                                            <form action="" method="POST">
+                                                {% csrf_token %}
+                                                {{form | crispy}}
+                                                
+                                                <br>
+                                                <input style="margin-left:45%;" class="btn btn-primary" type="submit" name="Submit">
+
+                                            </form>
+                                            {% endblock %}
+                                            
+                                            
+                                            <!--  -->
+                                        </div>
+                                    </div>
+
+                            </div>
+                        
+                    </div>
+                    <div class="col" style="margin-top: 30px;">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">Your Complaints</h4>
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>Name of Customer</th>
+                                                <th>Date/Time places</th>
+                                                <th>Message Content</th>
+                                                
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for complaint in customer.complaint_set.all %}
+                                            <tr>
+                                                
+                                                <td>{{customer.first_name}}</td>
+                                                <td>{{complaint.time_placed}}</td>
+                                                <td>{{complaint.message}}</td>
+                                                <td><a href="{% url 'customer:delete_complaint' complaint.id %}" class="btn btn-danger">Withdraw Complaint</a></td>
+                                                
+                                                
+
+                                                <!-- <td><a style="color:white" class="btn btn-info">Update</a> -->
+                                                 
+                                            </tr>
+                    
+                                            {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer class="bg-white sticky-footer">
+            <div class="container my-auto">
+                <div class="text-center my-auto copyright"><span>Copyright © QuickBytes 2020</span></div>
+            </div>
+        </footer>
+    </div><a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a></div>
+    <script src="{% static 'quickbytes/assets/js/jquery.min.js' %}"></script>
+    <script src="{% static 'quickbytes/assets/bootstrap/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'quickbytes/assets/js/chart.min.js' %}"></script>
+    <script src="{% static 'quickbytes/assets/js/bs-init.js' %}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.js"></script>
+    <script src="{% static 'quickbytes/assets/js/theme.js' %}"></script>
+</body>
+
+</html>

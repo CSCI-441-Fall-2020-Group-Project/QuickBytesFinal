@@ -1,0 +1,14 @@
+<html>
+	<head>
+		{% load django_tables2 %}
+		{% load render_table from django_tables2 %}
+	</head>
+	<body>
+		<h1>Search Orders</h1>
+		<form action="" method="get">
+			{{ filter.form }}
+			<input class="btn" type="submit"/>
+		</form>
+		{% render_table table %}
+	</body>
+</html>

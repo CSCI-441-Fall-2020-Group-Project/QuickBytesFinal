@@ -1,0 +1,27 @@
+<html>
+	<body>
+		<h1>{{ object.orderType }} order for {{ object.customerName }}</h1>
+		<h2>{{ object.status }}</h2>
+		<h3>Time Ordered: {{ object.timeOrdered }}</h3>
+		<a href="/tickets/additem/{{ object.pk }}"><input type="button" class="btn" value="Add Item"/></a>
+		<a href="{% url 'tickets:sendOrder' object.pk %}"><input type="button" class="btn" value="Complete Order"/></a>
+		{{ object }}
+		<h2>Items Ordered</h2>
+		<table>
+			<tr>
+				<th>Item #</th>
+				<th>Menu Item</th>
+				<th>Special Instructions</th>
+				<th>Allergies</th>
+			</tr>
+			{% for item in object.itemtable_set.all %}
+			<tr>
+				<td><a href="/tickets/editItem/{{ item.id }}">Edit</a></td>
+				<td>{{ item.menuItem }}</td>
+				<td>{{ item.specialInstructions }}</td>
+				<td>{{ item.allergies }}<td>
+			</tr>		
+			{% endfor %}
+		</table>
+	</body>
+</html>

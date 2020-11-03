@@ -1,0 +1,75 @@
+
+h2 {
+    color: #838383;
+    text-align: center;
+    font-family: 'Raleway', sans-serif;
+    font-size: 2.2rem;
+    margin-bottom: 0px;
+
+}
+
+h3{
+    color: #4a3f35;
+    text-align: center;
+    font-family: 'Raleway', sans-serif;
+    font-size: 1.2rem;
+    margin-bottom: 0px;
+    margin-top: 20px;
+    
+}
+
+.top-of-drink-section{
+    margin-top:50px;
+}
+
+.fries{
+    
+    text-align:center;
+}
+
+.menu-container{
+    margin: auto;
+    width: 50%;
+    border: 3px solid #d4b47b;
+    padding: 10px;
+    background-color: #f8f5f5;
+
+}
+
+li{
+    font-family: 'Raleway-Light', sans-serif;
+    
+    color: #523906;
+    font-size: .9rem;
+}
+
+ul{
+    padding: 1% 3% 1% 1%;
+    margin-left: 15px;
+}
+
+
+hr{
+    border: solid #d9adad 2px;
+    border-top: none;
+    width: 250px;
+    margin-bottom: 25px;
+    margin-top: 4px;
+  
+  }
+
+  form{
+      text-align: center;
+      
+  }
+
+  .quantity{
+      margin-top: 25px;
+  }
+  
+  .comment-box{
+      margin-top: 25px;
+      
+  }
+
+

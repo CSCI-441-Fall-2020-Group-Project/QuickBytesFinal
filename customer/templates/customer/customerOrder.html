@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Customer Order - QuickBytes</title>
+    <link rel="stylesheet" href="{% static 'quickbytes/assets/bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
+    <link rel="stylesheet" href="{% static 'quickbytes/assets/fonts/fontawesome-all.min.css' %}">
+    <link rel="stylesheet" href="{% static 'quickbytes/assets/fonts/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'quickbytes/assets/fonts/ionicons.min.css' %}">
+    <link rel="stylesheet" href="{% static 'quickbytes/assets/fonts/fontawesome5-overrides.min.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+</head>
+
+<body id="page-top">
+    <div id="wrapper">
+        {% include 'customer/customer_navbar.html' %}
+        <div class="d-flex flex-column" id="content-wrapper">
+            <div id="content">
+                {% include 'customer/upper_nav.html' %}
+            <div class="container-fluid">
+                <div class="d-sm-flex justify-content-between align-items-center mb-4">
+                   
+                    <!-- <h3 class="text-dark mb-0">Create Order</h3> -->
+                </div>
+            </div>
+            <div class="container text-center">
+                <div class="row">
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">Create Order</h4>
+                                
+                                {% load crispy_forms_tags %}
+
+                                {% block content %}
+                                <form action="" method="POST">
+                                    {% csrf_token %}
+                                    {{form | crispy}}
+                                    
+                                    <br>
+                                    <input type="submit" name="Submit">
+                                </form>
+                                {% endblock %}
+
+
+                                <!--  -->
+                            </div>
+                        </div>
+                        <div class="col" style="margin-top: 30px;">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="card-title">Your Orders</h4>
+                                    <div class="table-responsive">
+                                        <table class="table">
+                                            <thead>
+                                                <tr>
+                                                    <th>Name on Order</th>
+                                                    <th>Type</th>
+                                                    <th>Table Number</th>
+                                                    <th>Order Total</th>
+                                                    <th>Status</th>
+                                                    <th>Time Ordered</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                {% for order in orders reversed %}
+                                                <tr>
+                                                    {% if order.customername == customer %}
+                                                    <td>{{order.customername.first_name}} {{order.customername.last_name}}</td>
+                                                    <td>{{order.ordertype}}</td>
+                                                    <td>{{order.tablenumber.tableName}}</td>
+                                                    <td>${{order.total}}</td>
+                                                    <td>{{order.status}}</td>
+                                                    <td>{{order.timeordered}}</td>
+                                                    <td><a href="{% url 'customer:add_items' order.id %}" class="btn btn-info">View/Update Order</a></td>
+                                                    <td><a href="{% url 'customer:cancel_order' order.id %}" class="btn btn-danger">Cancel Order</a></td>
+                                                    <td></td>
+
+                                                    <!-- <td><a style="color:white" class="btn btn-info">Update</a> -->
+                                                     {% endif %}
+                                                </tr>
+                        
+                                                {% endfor %}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+
+    <div>
+       
+    </div>
+    <footer class="bg-white sticky-footer">
+        <div class="container my-auto">
+            <div class="text-center my-auto copyright"><span>Copyright © QuickBytes 2020</span></div>
+        </div>
+    </footer>
+    </div><a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a></div>
+    <script src="{% static 'quickbytes/assets/js/jquery.min.js' %}"></script>
+    <script src="{% static 'quickbytes/assets/bootstrap/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'quickbytes/assets/js/chart.min.js' %}"></script>
+    <script src="{% static 'quickbytes/assets/js/bs-init.js' %}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.js"></script>
+    <script src="{% static 'quickbytes/assets/js/theme.js' %}"></script>
+</body>
+
+</html>
+
+
+
+
+
+<!-- <div class="col"> 
+    <div class="card">
+    <div class="card-body">
+        <h4 class="card-title">Submit your order for pick up or delivery</h4>
+        <form method="post" action="orderSubmit">
+            <div class="card">
+                <div class="card-body">
+                    <div class="form-row">
+                        <div class="col"><span class="float-left">Customer Name:</span><input class="form-control" type="text" name="custName" required="" minlength="1" maxlength="100" placeholder="John Doe"></div>
+                        <div class="col"><span class="float-left">Order Pickup/Delivery Date:</span><input class="form-control" type="date" name="orderDate" required=""></div>
+                        <div class="col"><span class="float-left">Order Pickup/Delivery Time:</span><input class="form-control" type="time" required="" name="orderTime"></div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col"><span class="float-left">Customer Address (Delivery Orders only):</span><input class="form-control" type="text" name="custAddress" minlength="1" maxlength="100" placeholder="1024 Rainbow Road Atlanta, GA 30032"></div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="card-title">Main Dish</h4>
+                                    <div class="form-row">
+                                        <div class="col">
+                                            <div class="form-row d-xl-flex">
+                                                <div class="col d-xl-flex justify-content-xl-center"><span class="float-left" style="margin: 5px;">3 Rib Plate - $6.99</span><input class="form-control form-control-sm" type="number" min="0" max="10" name="meal1Quantity" style="width: 57px;"></div>
+                                            </div>
+                                            <div class="form-row d-xl-flex">
+                                                <div class="col d-xl-flex justify-content-xl-center"><span class="float-left" style="margin: 5px;">5 Rib Slab - $8.99</span><input class="form-control form-control-sm" type="number" min="0" max="10" name="meal2Quantity" style="width: 57px;"></div>
+                                            </div>
+                                            <div class="form-row d-xl-flex">
+                                                <div class="col d-xl-flex justify-content-xl-center"><span class="float-left" style="margin: 5px;">Smoked Turkey Leg - $7.99</span><input class="form-control form-control-sm" type="number" min="0" max="10" name="meal3Quantity" style="width: 57px;"></div>
+                                            </div>
+                                            <div class="form-row d-xl-flex">
+                                                <div class="col d-xl-flex justify-content-xl-center"><span class="float-left" style="margin: 5px;">Pulled Pork Sandwich - $5.99</span><input class="form-control form-control-sm" type="number" min="0" max="10" name="meal4Quantity" style="width: 57px;"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="card-title">Sides</h4>
+                                    <div class="form-row">
+                                        <div class="col">
+                                            <div class="form-row d-xl-flex">
+                                                <div class="col d-xl-flex justify-content-xl-center"><span class="float-left" style="margin: 5px;">White Rice - $0.99</span><input class="form-control form-control-sm" type="number" min="0" max="10" name="side1Quantity" style="width: 57px;"></div>
+                                            </div>
+                                            <div class="form-row d-xl-flex">
+                                                <div class="col d-xl-flex justify-content-xl-center"><span class="float-left" style="margin: 5px;">Mac N Cheese - $1.25</span><input class="form-control form-control-sm" type="number" min="0" max="10" name="side2Quantity" style="width: 57px;"></div>
+                                            </div>
+                                            <div class="form-row d-xl-flex">
+                                                <div class="col d-xl-flex justify-content-xl-center"><span class="float-left" style="margin: 5px;">Beans and Bacon- $0.99</span><input class="form-control form-control-sm" type="number" min="0" max="10" name="side3Quantity" style="width: 57px;"></div>
+                                            </div>
+                                            <div class="form-row d-xl-flex">
+                                                <div class="col d-xl-flex justify-content-xl-center"><span class="float-left" style="margin: 5px;">Green Beans with Ham - $1.50</span><input class="form-control form-control-sm" type="number" min="0" max="10" name="side4Quantity" style="width: 57px;"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col">
+                            <h4 class="text-left" style="padding: 5px;">Notes/Requests</h4><textarea class="form-control" style="padding: 9px;margin: 5px;"></textarea></div>
+                        <div class="col">
+                            <h4>Order Total</h4><span>$</span><span>Amount</span>
+                            <div class="form-group">
+                                <div class="col">
+                                    <div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-1" name="splitBill"><label class="form-check-label" data-toggle="tooltip" data-bs-tooltip="" for="formCheck-1" title="Bill splitting is for in-person orders only">Split Bill</label></div>
+                                    <div
+                                        class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-2" name="addTip"><label class="form-check-label" for="formCheck-2">Add 10% Tip</label></div>
+                                <div class="form-check" data-toggle="tooltip"
+                                    data-bs-tooltip="" title="If this order is for a reservation, please leave the guest name, reservation date, and time in the notes section"><input class="form-check-input" type="checkbox" id="formCheck-4"><label class="form-check-label" for="formCheck-4">Reservation?</label></div>
+                                <div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-3"><label class="form-check-label" for="formCheck-3">Apply Discount (If applicable)</label></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </div><button class="btn btn-primary btn-lg" data-toggle="tooltip" data-bs-tooltip="" type="submit" title="Click here to submit the order" style="margin: 5px;padding: 10px;">Submit Order</button></form>
+</div>
+</div> -->

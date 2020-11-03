@@ -1,0 +1,23 @@
+<html>
+	<body>
+		<h1>Kitchen View</h1>
+		<h2>{{ object.orderType }} order for {{ object.customerName }}</h2>
+		{{ object }}<br>
+		<a href="/chef/sendback/{{object.pk }}"><input type="button" class="btn" value="Send Back to Server"/></a>
+		<h2>Items Ordered</h2>
+		<table>
+			<tr>
+				<th>Menu Item</th>
+				<th>Special Instructions</th>
+				<th>Allergies</th>
+			</tr>
+			{% for item in object.itemtable_set.all %}
+			<tr>
+				<td>{{ item.menuitem }}</td>
+				<td>{{ item.specialInstructions }}</td>
+				<td>{{ item.allergies }}<td>
+			</tr>		
+			{% endfor %}
+		</table>
+	</body>
+</html>

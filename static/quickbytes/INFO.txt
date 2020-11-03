@@ -1,0 +1,2 @@
+There are two designs I made for the site. The first is the homepage, which is already implemented, and the second is the actual database system design.
+The database system design assets are housed in this quickbytes folder while the homepage assets are in home. - Mark

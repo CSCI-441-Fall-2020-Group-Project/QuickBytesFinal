@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Dashboard - Brand</title>
+    <link rel="stylesheet" href="{% static 'quickbytes/assets/bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
+    <link rel="stylesheet" href="{% static 'quickbytes/assets/fonts/fontawesome-all.min.css' %}">
+    <link rel="stylesheet" href="{% static 'quickbytes/assets/fonts/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'quickbytes/assets/fonts/ionicons.min.css' %}">
+    <link rel="stylesheet" href="{% static 'quickbytes/assets/fonts/fontawesome5-overrides.min.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+</head>
+
+<body id="page-top">
+    <div id="wrapper">
+        {% include 'host/host_navbar.html' %}
+        <div class="container-fluid">
+          <div class="card shadow">
+              <div class="card-header py-3" style="margin: 0px;">
+                  <p class="text-primary m-0 font-weight-bold">Table Queue - Host/Hostess</p>
+              </div>
+              <div class="card-body">
+                  <div class="table-responsive table mt-2" id="dataTable" role="grid" aria-describedby="dataTable_info">
+                      <table class="table dataTable my-0" id="dataTable">
+                          <thead>
+                              <tr>
+                                  <th>Server</th>
+                                  <th>Section</th>
+                                  <th>Table</th>
+                                  <th>Seats</th>
+                                  <th>Status</th>
+                                  <th>Update</th>
+                              </tr>
+                          </thead>
+                          <tbody>
+                              {% for table in object_list %}
+                                  <tr>
+                                      <td>{{ table.server }}</td>
+                                      <td>{{ table.section }}</td>
+                                      <td>{{ table.table }}</td>
+                                      <td>{{ table.seats }}</td>
+                                      <td>{{ table.status }}</td>
+                                      <td>
+                                          <!-- <a href="{% url 'busser:add-table' table.id %}">
+                                              <button class="btn btn-primary" data-toggle="tooltip" data-bs-tooltip="" type="button" title="Assign to server/section">
+                                                  Assign
+                                              </button>
+                                          </a> -->
+                                      </td>
+                                  </tr>
+                              {% endfor %}
+                          </tbody>
+                      </table>
+                  </div>
+                  <div class="row">
+                      <div class="col-md-6 align-self-center">
+                          <p id="dataTable_info" class="dataTables_info" role="status" aria-live="polite">Showing 1 to 10 of 27</p>
+                      </div>
+                      <div class="col-md-6">
+                          <nav class="d-lg-flex justify-content-lg-end dataTables_paginate paging_simple_numbers">
+                              <ul class="pagination">
+                                  <li class="page-item disabled"><a class="page-link" href="#" aria-label="Previous"><span aria-hidden="true">«</span></a></li>
+                                  <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                                  <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                  <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                  <li class="page-item"><a class="page-link" href="#" aria-label="Next"><span aria-hidden="true">»</span></a></li>
+                              </ul>
+                          </nav>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+    <footer class="bg-white sticky-footer">
+        <div class="container my-auto">
+            <div class="text-center my-auto copyright"><span>Copyright © QuickBytes 2020</span></div>
+        </div>
+    </footer>
+    </div><a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a></div>
+    <script src="{% static 'quickbytes/assets/js/jquery.min.js' %}"></script>
+    <script src="{% static 'quickbytes/assets/bootstrap/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'quickbytes/assets/js/chart.min.js' %}"></script>
+    <script src="{% static 'quickbytes/assets/js/bs-init.js' %}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.js"></script>
+    <script src="{% static 'quickbytes/assets/js/theme.js' %}"></script>
+</body>
+
+</html>

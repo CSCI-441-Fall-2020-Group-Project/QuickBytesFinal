@@ -1,0 +1,27 @@
+<html>
+	<h1>Orders</h1>
+	<table>
+		<tr>
+			<th>Edit</th>
+			<th>Customer</th>
+			<th>Type</th>
+			<th>Status</th>
+			<th>Ordered</th>
+			<th>Completed</th>
+			<th>Table</th>
+			<th>Total</th>
+		</tr>
+		{% for order in object_list %}
+		<tr>
+			<td><a href="/tickets/{{ order.id }}">Edit</a></td>
+			<td>{{ order.customerName }}</td>
+			<td>{{ order.orderType }}</td>
+			<td>{{ order.status }}</td>
+			<td>{{ order.timeOrdered }}</td>
+			<td>{{ order.timeCompleted }}</td>
+			<td>{{ order.table }}</td>
+			<td>{{ order.total }}</td>
+		</tr>
+		{% endfor %}
+	</table>
+</html>

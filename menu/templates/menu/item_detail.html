@@ -1,0 +1,53 @@
+{% load static %}
+
+<html>
+  <head> </head>
+  <link rel="stylesheet" type="text/css" href="{% static 'menu/styles.css'%}" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;600&display=swap"
+    rel="stylesheet"
+  />
+  <body>
+    <div class="menu-container">
+      <h2>{{menu_item.name}}</h2>
+      <h3>Price: ${{menu_item.price}}</h3>
+      {% block content %}
+      <form>
+        {{ form.as_p }}
+        <input type="submit" value="Save">
+      </form>
+      {% endblock %}
+      <a href="{% url 'menu:index'  %}">Back to Menu</a>
+    </div>
+   
+  </body>
+</html>
+
+
+
+
+
+<!-- old form -->
+      <!-- <form>
+        <div class="quanity">
+          <b>Quantity</b>
+          <input
+            class="format"
+            type="number"
+            name="itemQuantity"
+            value="1"
+            min="1"
+            max="15"
+          />
+        </div>
+        <div class="comment-box">
+          <b>Comments</b>
+          <textarea
+            id="comments"
+            name="comments"
+            maxlength="180"
+            rows="4"
+          ></textarea>
+        </div>
+        <button class="order-btn">Add To Order</button>
+      </form>

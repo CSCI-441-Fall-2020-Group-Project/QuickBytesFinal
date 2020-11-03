@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>FAQ - Brand</title>
+    <link rel="stylesheet" href="{% static 'home/assets/bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,700,700i,600,600i">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Archivo+Black">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oswald">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab">
+    <link rel="stylesheet" href="{% static 'home/assets/fonts/simple-line-icons.min.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.css">
+    <link rel="stylesheet" href="{% static 'home/assets/css/smoothproducts.css' %}">
+</head>
+
+<body>
+    <nav class="navbar navbar-light navbar-expand-lg fixed-top bg-white clean-navbar">
+        <div class="container"><a class="navbar-brand logo" data-bs-hover-animate="pulse" href="home" style="color: rgb(78,115,223);font-family: Oswald, sans-serif;">QuickBytes</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+            <div
+                class="collapse navbar-collapse" id="navcol-1">
+                <ul class="nav navbar-nav ml-auto">
+			<li class="nav-item" role="presentation"><a class="nav-link" data-bs-hover-animate="pulse" href={% url 'index' %}>Home</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link active" data-bs-hover-animate="pulse" href="faq">FAQ</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" data-bs-hover-animate="pulse" href="about-us">About Us</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" data-bs-hover-animate="pulse" href="menu">Menu</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" data-bs-hover-animate="pulse" href="login">Login</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" data-bs-hover-animate="pulse" href="register">Register</a></li>
+                </ul>
+        </div>
+        </div>
+    </nav>
+    <main class="page faq-page">
+        <section class="clean-block clean-faq dark">
+            <div class="container">
+                <div class="block-heading">
+                    <h2 class="text-info" style="color: rgb(78,115,223);">FAQ</h2>
+                    <p>Pressing questions are answered here</p>
+                </div>
+                <div class="block-content">
+                    <div class="faq-item">
+                        <h4 class="question">Q: Is this system just for employees?</h4>
+                        <div class="answer">
+                            <p>No! Our system allows customers to sign up and order from your restuarant all from the same system!</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <h4 class="question">Q: What are features managers can use?</h4>
+                        <div class="answer">
+                            <p>Managers are able to check income and expenses, reply to complaints, schedule workers, and more. Our easy-to-use system is designed to make any managers day a breeze.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <h4 class="question">Q: What is the pricing?</h4>
+                        <div class="answer">
+                            <p>Our product is in Alpha phase right now. By signing up during this period, restuarants are able to operate on our platform cost free. When the product is ready for a complete launch, businesses that are already active members will get a loyalty discount for our product!</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <h4 class="question">Q: What are the features workers can use?</h4>
+                        <div class="answer">
+                            <p>Answer later</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer class="page-footer dark">
+        <div class="container">
+            <div class="row float-none d-xl-flex justify-content-xl-center" style="max-width: -3px;">
+                <div class="col-sm-3" style="max-width: 50%;">
+                    <h5>Get started</h5>
+                    <ul>
+                        <li><a href="home">Home</a></li>
+                        <li><a href="register">Sign up</a></li>
+                        <li style="color: rgb(193,193,193);"><a href="about-us">About Us</a></li>
+                    </ul>
+                </div>
+                <div class="col-sm-3" style="max-width: 50%;">
+                    <h5>Support</h5>
+                    <ul>
+                        <li><a href="faq">FAQ</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-copyright">
+            <p>© 2020 QuickBytes</p>
+        </div>
+    </footer>
+    <script src="{% static 'home/assets/js/jquery.min.js' %}"></script>
+    <script src="{% static 'home/assets/bootstrap/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'home/assets/js/bs-init.js' %}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.js"></script>
+    <script src="{% static 'home/assets/js/smoothproducts.min.js' %}"></script>
+    <script src="{% static 'home/assets/js/theme.js' %}"></script>
+</body>
+
+</html>

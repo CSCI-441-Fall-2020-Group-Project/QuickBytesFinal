@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Cancel Order - QuickBytes</title>
+    <link rel="stylesheet" href="{% static 'quickbytes/assets/bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
+    <link rel="stylesheet" href="{% static 'quickbytes/assets/fonts/fontawesome-all.min.css' %}">
+    <link rel="stylesheet" href="{% static 'quickbytes/assets/fonts/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'quickbytes/assets/fonts/ionicons.min.css' %}">
+    <link rel="stylesheet" href="{% static 'quickbytes/assets/fonts/fontawesome5-overrides.min.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+</head>
+
+<!-- JQUERY  -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+
+<!-- CDSoft DateTimePicker -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.min.css" integrity="sha256-DOS9W6NR+NFe1fUhEE0PGKY/fubbUCnOfTje2JMDw3Y=" crossorigin="anonymous" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.min.js" integrity="sha256-FEqEelWI3WouFOo2VWP/uJfs1y8KJ++FLh2Lbqc8SJk=" crossorigin="anonymous"></script>
+
+<body id="page-top">
+    
+    <div id="wrapper">
+        {% include 'host/host_navbar.html' %}
+        <div class="d-flex flex-column" id="content-wrapper">
+            <div id="content">
+                
+               
+            <div class="container-fluid">
+                <div class="d-sm-flex justify-content-between align-items-center mb-4">
+                </div>
+                <div class="container text-center">
+                    <div class="row">
+                        <div class="col">
+                            <div class="card">
+                                <div class="card-body">
+                    {% block content %}
+                
+                    <p>Are you sure you want to cancel the Reservation for <b>{{reservation.customer.first_name}} placed at <b>{{reservation.time}} on <b>{{reservation.date}}</b>?</b></p>
+                    <form method="POST">
+                    {% csrf_token %}
+                    <input class="btn btn-danger" type="submit" value="Cancel Order" name="Submit"><br>
+                    <a href="{% url 'host:dashboard' %}">Back</a>
+
+                    </form>
+
+            {% endblock %}
+</div></div></div></div></div>
+                </div>
+            </div>
+            
+        <footer class="bg-white sticky-footer">
+            <div class="container my-auto">
+                <div class="text-center my-auto copyright"><span>Copyright © QuickBytes 2020</span></div>
+            </div>
+        </footer>
+    </div><a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a></div>
+    <script src="{% static 'quickbytes/assets/js/jquery.min.js' %}"></script>
+    <script src="{% static 'quickbytes/assets/bootstrap/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'quickbytes/assets/js/chart.min.js' %}"></script>
+    <script src="{% static 'quickbytes/assets/js/bs-init.js' %}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.js"></script>
+    <script src="{% static 'quickbytes/assets/js/theme.js' %}"></script>
+</body>
+
+</html>
