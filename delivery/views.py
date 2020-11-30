@@ -7,10 +7,11 @@ from django.db.models import Q
 from decimal import Decimal
 
 from tickets.models import Orderstable, Itemtable
+from tickets.views import addItem, editOrder, editItem
 from customer.models import Customer
 from manager.models import Worker_Complaint                                                                        
 from django.http import HttpResponse                                                                                                                                                        
-from . forms import Worker_Complaint_Form
+from . forms import Worker_Complaint_Form, addOrderForm, editOrderForm
 
 # Create your views here.
 class addCustomer(CreateView):
@@ -22,17 +23,17 @@ class addCustomer(CreateView):
         return reverse('delivery:addcustomerorder')
 
 
-class addCustomerOrder(CreateView):
+class addCustomerOrderDelivery(CreateView):
     model = Orderstable
-    fields =['customername', 'ordertype']
+    #fields =['customername', 'ordertype', 'requestedtime']
+    form_class = addOrderForm
     template_name = 'delivery/orderstable_form.html'
 
     def get_success_url(self):
         return reverse('delivery:viewOrder', kwargs={'pk': self.object.pk}) 
 
 
-class addItem(CreateView):
-    model = Itemtable
+class addItemDelivery(addItem):
     fields = ['ordernumber', 'menuitem', 'specialinstructions', 'allergies',] 
     template_name = 'delivery/itemtable_form.html'
     
@@ -44,33 +45,22 @@ class addItem(CreateView):
         initial['ordernumber'] = self.kwargs['pk']
         return initial
 
+
 class dashboard(ListView):
-    queryset = Orderstable.objects.filter(Q(ordertype='delivery') | Q(ordertype='carryout'))
+    queryset = Orderstable.objects.filter(Q(ordertype='delivery') | Q(ordertype='carryout')).order_by('requestedtime')
     context_object_name = 'object'
     template_name = 'delivery/deliveryOrder.html'
 
-class viewOrder(DetailView):
+
+class viewOrderDelivery(DetailView):
     model = Orderstable
     template_name = 'delivery/orderstable_detail.html'
 
     def get_success_url(self):
-        return reverse('viewOrder', kwargs={'pk': self.object.pk})
-'''
-class viewOrder(UpdateView):
-    model = Orderstable
-    fields = ['message', 'status']
+        return reverse('delivery:viewOrderDelivery', kwargs={'pk': self.object.pk})
 
-    def get_context_data(self, **kwargs):
-        context = super(viewOrder, self).get_context_data(**kwargs)
-        items = Orderstable.objects.get(id=self.object.id)
-        context['items'] = items
-        return context
 
-    def get_success_url(self):
-        return reverse('viewOrder', kwargs={'pk': self.object.pk})
-'''
-
-class editItem(UpdateView):
+class editItemDelivery(UpdateView):
     model = Itemtable
     fields = ['ordernumber', 'menuitem', 'specialinstructions', 'allergies', 'server', 'ordertime', 'completiontime', 'status'] 
     template_name = 'delivery/itemtable_update_form.html'
@@ -78,9 +68,25 @@ class editItem(UpdateView):
     def get_success_url(self):
         return reverse('delivery:viewOrder', kwargs={'pk': self.object.ordernumber.id}) 
 
+
+class editCustomerOrder(UpdateView):
+    model = Orderstable
+    form_class = editOrderForm
+    template_name = 'delivery/orderstable_form_edit.html'
+
+    def get_success_url(self):
+        return reverse('delivery:vieworder', kwargs={'pk': self.object.pk}) 
+    
+
 def sendToKitchen(request, pk):
     order = Orderstable.objects.get(id=pk)
     order.status = 'sentToKitchen'
+    order.save()
+    return redirect('delivery:dashboard')
+
+def delivered(request, pk):
+    order = Orderstable.objects.get(id=pk)
+    order.status = 'delivered'
     order.save()
     return redirect('delivery:dashboard')
 
@@ -90,6 +96,7 @@ def profile(request):
     template = 'delivery/deliveryProfile.html'
     return render(request, template, context) 
 
+
 # Creates anonymous complaints to the Manager
 class create(CreateView):
     model=Worker_Complaint
@@ -98,9 +105,4 @@ class create(CreateView):
 
     def get_success_url(self):
         return reverse('delivery:complaints')
-
-def orders(request):
-    context = {'text': 'Delivery Order Queue'}
-    template = 'delivery/deliveryOrder.html'
-    return render(request, template, context) 
 

@@ -1,5 +1,9 @@
 <html>
-	<h1>Create New Reservation</h1>
+
+	{% include 'home/navbar.html' %}
+
+
+	<h1 style="margin-top:50px;">Create New Reservation</h1>
 	<form method="post">{% csrf_token %}
 		{{ form.as_p }}
 		<input type="submit" value="Save">

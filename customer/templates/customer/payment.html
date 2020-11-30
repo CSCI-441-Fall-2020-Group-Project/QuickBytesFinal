@@ -40,7 +40,48 @@
                         <div class="col">
                             <div class="card">
                                 <div class="card-body">
-                                    <h4 class="card-title">Add Items to Order</h4>
+                                    <h4 class="card-title">Pay For Order</h4>
+                                    <div class="table-responsive">
+                                    <table class="table">
+                                        <thead>
+                                            <th>Name On Order</th>
+                                            <th>Type</th>
+                                            <th>Table Number</th>
+                                            <th>Order Total</th>
+                                            <th>Status</th>
+                                            <th>Time Ordered</th>
+                                            
+                                        </thead>
+                                        <tbody>
+                                            <td>{{order.customername.first_name}} {{order.customername.last_name}}</td>
+                                                    <td>{{order.ordertype}}</td>
+                                                    <td>{{order.tablenumber.tableName}}</td>
+                                                    <td>${{order.total}}</td>
+                                                    <td>{{order.status}}</td>
+                                                    <td>{{order.timeordered}}</td>
+                                                    <td><a href="{% url 'customer:add_items' order.id %}" class="btn btn-info">View/Update Order</a></td>
+                                                    <td><a href="{% url 'customer:cancel_order' order.id %}" class="btn btn-danger">Cancel Order</a></td>
+                                        </tbody>
+                                        
+
+                                    </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                             
+                                    
+                                    
+    
+    
+                                    <!--  -->
+                    </div>
+                    <div style="margin-top:30px;"class="row">
+                        <div class="col">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="card-title">Payment</h4>
                                     
                                     {% load crispy_forms_tags %}
     
@@ -50,19 +91,22 @@
                                         {{form | crispy}}
                                         
                                         <br>
-                                        <input class="btn btn-primary" type="submit" value="Add Item" name="Submit">
+                                        <input class="btn btn-primary" type="submit" value="Submit Payment" name="Submit">
                                     </form>
-                                    {% endblock %}<br>
+                                    {% endblock %}
     
     
                                     <!--  -->
                                 </div>
                             </div>
-                            
+                        </div>  
                     </div>
-                    
                 </div>
+                            
             </div>
+                    
+        </div>
+        </div>
             
         <footer class="bg-white sticky-footer">
             <div class="container my-auto">

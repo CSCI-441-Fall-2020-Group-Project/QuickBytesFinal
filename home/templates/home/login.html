@@ -18,7 +18,8 @@
 </head>
 
 <body class="bg-gradient-primary">
-    <div class="container">
+    {% include 'home/navbar.html' %}
+    <div style="margin-top:50px;"class="container">
         <div class="row justify-content-center">
             <div class="col-md-9 col-lg-12 col-xl-10">
                 <div class="card shadow-lg o-hidden border-0 my-5">
@@ -31,9 +32,14 @@
                                 <div class="p-5">
                                     <div class="text-center">
                                         <h4 class="text-dark mb-4">Welcome Back to QuickBytes!</h4>
-					{% if messages %}
-						  <p style="color:red">{{ messages.error }}</p>
-					{% endif %}
+                                        {% if messages %}
+                                            {% for message in messages %}
+                                                <div class="alert alert-danger">
+                                                    <a class="close" href="#" data-dismiss="alert">x</a>
+                                                    {{ message }}
+                                                </div>
+                                            {% endfor %}
+                                        {% endif %}
                                     </div>
                                     {% block content %}
                                     <form class="user" method="POST" action="">

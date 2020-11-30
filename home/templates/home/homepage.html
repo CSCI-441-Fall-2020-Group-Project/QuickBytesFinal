@@ -24,39 +24,7 @@
 
 </head>
 <body>
-    <nav class="navbar navbar-light navbar-expand-lg fixed-top bg-white clean-navbar">
-        <div class="container"><a class="navbar-brand logo" data-bs-hover-animate="pulse" href="home" style="color: rgb(78,115,223);font-family: Oswald, sans-serif;">QuickBytes</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
-            <div
-                class="collapse navbar-collapse" id="navcol-1">
-                <ul class="nav navbar-nav ml-auto">
-			<li class="nav-item" role="presentation"><a class="nav-link active" data-bs-hover-animate="pulse" href="{% url 'index' %}">Home</a></li>
-			<li class="nav-item" role="presentation"><a class="nav-link" data-bs-hover-animate="pulse" href="{% url 'faq' %}">FAQ</a></li>
-			<li class="nav-item" role="presentation"><a class="nav-link" data-bs-hover-animate="pulse" href="{% url 'about-us' %}">About Us</a></li>
-            <li class="nav-item" role="presentation"><a class="nav-link" data-bs-hover-animate="pulse" href="menu">Menu</a></li>
-		    <li class="nav-item" role="presentation"><a class="nav-link" data-bs-hover-animate="pulse" href="{% url 'login' %}">Login</a></li>
-            <li class="nav-item" role="presentation"><a class="nav-link" data-bs-hover-animate="pulse" href="{% url 'register' %}">Register</a></li>
-            <!-- <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Employees
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <a class="dropdown-item" href="#">Manager</a>
-                  <a class="dropdown-item" href="#">Host</a>
-                  <a class="dropdown-item" href="#">Chef</a>
-                  <a class="dropdown-item" href="#">Server</a>
-                  <a class="dropdown-item" href="#">Delivery Liaison</a>
-                  <a class="dropdown-item" href="#">Busser</a>
-                </div>
-              </li> -->
-              <li class="nav-item" role="presentation">
-                <div class="nav-item dropdown show"><a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true" href="#">Dropdown </a>
-                    <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="#">First Item</a><a class="dropdown-item" role="presentation" href="#">Second Item</a><a class="dropdown-item" role="presentation" href="#">Third Item</a></div>
-                </div>
-              </li>
-                </ul>
-        </div>
-        </div>
-    </nav>
+    {% include 'home/navbar.html' %}
     <main class="page landing-page">
         <section class="clean-block clean-hero" style="color: rgba(78,115,223,0.54);background-image: url(../../../../static/home/assets/img/scenery/image7.jpg);">
             <div class="text" style="color: #ffffff;">
@@ -132,29 +100,7 @@
     </main>
     
     <!--                            Footer section                              -->
-    <footer class="page-footer dark">
-        <div class="container">
-            <div class="row float-none d-xl-flex justify-content-xl-center" style="max-width: -3px;">
-                <div class="col-sm-3" style="max-width: 50%;">
-                    <h5>Get started</h5>
-                    <ul>
-                        <li><a href="home">Home</a></li>
-                        <li><a href="register">Sign up</a></li>
-                        <li style="color: rgb(193,193,193);"><a href="about-us">About Us</a></li>
-                    </ul>
-                </div>
-                <div class="col-sm-3" style="max-width: 50%;">
-                    <h5>Support</h5>
-                    <ul>
-                        <li><a href="faq">FAQ</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <div class="footer-copyright">
-            <p>© 2020 QuickBytes</p>
-        </div>
-    </footer>
+    {% include 'home/footer.html' %}
     <!-- Script files that control hover animations, slide gallery, etc. - Mark -->
     <script src="{% static 'home/assets/js/jquery.min.js' %}"></script>
     <script src="{% static 'home/assets/bootstrap/js/bootstrap.min.js' %}"></script>

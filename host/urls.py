@@ -16,5 +16,10 @@ urlpatterns = [
     path('complaints/', views.create.as_view(), name='complaints'),
     path('information/', views.information, name='information'),
     path('tables/', views.tables.as_view(), name='tables'),
-    # path('add-table/', views.addTable.as_view(), name='add-table'),
+    path('assigntable/<int:pk>/', views.assignTable, name='assign_table'),
+    path('newtable/', views.newTable.as_view(), name='newtable'),
+    path('waitlist/',views.waitList, name="waitlist"),
+    path('cancelentry/<int:pk>/', views.cancelWaitList, name="cancel_entry"),
+    
+    
 ]

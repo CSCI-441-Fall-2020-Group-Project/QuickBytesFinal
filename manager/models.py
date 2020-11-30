@@ -42,6 +42,38 @@ class Schedule_Table(models.Model):
     worker_Date = models.DateField()
     worker_Break = models.IntegerField() 
 
+class Employee_Table(models.Model):
+    position = [
+        ('Chef', 'Chef'),
+        ('Server', 'Server'),
+        ('Busser', 'Busser'),
+        ('Manager', 'Manager'),
+        ('Host', 'Host'),
+        ('Delivery', 'Delivery'),
+    ]
+
+    performance = [
+        ('Great', 'Great'),
+        ('Good', 'Good'),
+        ('Average', 'Average'),
+        ('Poor', 'Poor'),
+        ('Abysmal', 'Abysmal'),
+    ]
+    employee_Name = models.CharField(max_length=50)
+    employee_Start = models.DateField()
+    employee_Position = models.CharField(max_length=50, choices=position)
+    employee_Salary = models.IntegerField()
+    employee_Performance = models.CharField(max_length=50, choices=performance)
+    employee_Comment = models.CharField(max_length=250)
+
+class Restock_Table(models.Model):
+    restock = [
+        ('Utensils', 'Utensils'),
+        ('Ingredients', 'Ingredients'),
+        ('Equipment', 'Equipment'),
+    ] 
+    restock_option = models.CharField(max_length=50, choices=restock)
+    restock_date = models.DateTimeField()
 
 def __str__(self):
     return self.name

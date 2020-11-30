@@ -2,10 +2,11 @@ from django.shortcuts import render, redirect
 from django.views.generic import (CreateView, DetailView, ListView, UpdateView, DeleteView)
 from django.urls import reverse_lazy, reverse
 from datetime import datetime
-from .forms import OrderForm, ItemtableForm
-from tickets.models import Orderstable, Itemtable
+from .forms import OrderForm, ItemtableForm, AlertstableForm
+from tickets.models import Orderstable, Itemtable, Alertstable
 from tickets.views import addCustomerOrder
 from django.http import HttpResponse 
+from busser.models import Table_Status
 
 # Create your views here.
 def profile(request):
@@ -101,3 +102,43 @@ def total(request, pk):
             order.total += order.total +  item.menuitem.price
     order.save()
     return redirect('/server/order/')
+
+class tables(ListView):
+    queryset = Table_Status.objects.filter(status='Occupied')
+    context_object_name = 'object'
+    template_name = 'server/tables.html'
+
+def setDirty(request, pk):
+    request = Table_Status.objects.get(id=pk)
+    request.status = 'Dirty'
+    request.save()
+    return redirect('server:tables')
+
+class addAlert(CreateView):
+    model = Alertstable
+    fields = [ 'sender', 'receiver', 'message', 'priority']
+
+    def get_success_url(self):
+        return reverse('tickets:viewAlert', kwargs={'pk': self.object.pk})
+
+class listAlerts(ListView):
+    model = Alertstable
+
+
+class viewAlert(DetailView):
+    model = Alertstable
+
+    def get_success_url(self):
+        return reverse('tickets:viewAlert', kwargs={'pk': self.object.pk})  
+
+def alert(request):
+    form = AlertstableForm()
+    if request.method == 'POST':
+        form = AlertstableForm(request.POST)
+        if form.is_valid:
+            alert = form.save()
+            return redirect('/server/serverAlerts/')
+    recentAlerts = Alertstable.objects.all()
+    context = {'text': 'Server Alerts', 'form':form, 'recentAlerts':recentAlerts}
+    template = 'server/serverAlerts.html'
+    return render(request, template, context) 

@@ -13,11 +13,18 @@ class Customer(models.Model):
     street_address = models.CharField(max_length=20, null=True, blank=True)
     city = models.CharField(max_length=20, null=True, blank=True)
     country = models.CharField(max_length=20, null=True, blank=True)
+    low_contact = models.BooleanField(default=False)
 
 
     def __str__(self):
         return self.user_name + " - " + str(self.id)
 
+class Payment(models.Model):
+    fullname = models.CharField(max_length=80)
+    cardnumber = models.CharField(max_length=16)
+    zip = models.CharField(max_length=10)
+    expiration = models.CharField(max_length=10)
+    securitycode = models.CharField(max_length=4)
 
 
 class Complaint(models.Model):

@@ -1,0 +1,91 @@
+*{
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+body{
+    font-family: 'Poppins', sans-serif;
+
+}
+
+.wrapper{
+    width: 100%;
+    margin: 100px auto;
+    padding: 5% 12%;
+    background-color: rgb(226, 222, 222);
+    border: 1px solid #333;
+    margin-bottom:0;
+    
+}
+
+.title{
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.title h4{
+    text-transform: capitalize;
+    font-size:36px;
+    position: relative;
+    display:inline-block;
+    padding-bottom: 10px;
+
+}
+
+.title h4 span{
+    display:block;
+    font-size: 18px;
+    font-style: italic;
+    margin-bottom: -5px;
+}
+
+.title h4:before{
+    position: absolute;
+    content:"";
+    width: 100px;
+    height:2px;
+    background-color: #4070f3;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+
+.menu{
+    
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:space-between;
+}
+
+.single-menu{
+    flex-basis:580px;
+    margin-bottom:20px;
+    padding-bottom:20px;
+    border-bottom: 1px solid #ddd;
+}
+
+.single-menu{
+    display: flex;
+    flex-direction: row;
+    align-items:center;
+}
+
+.single-menu h4{
+    text-transform: capitalize;
+    font-size: 22px;
+    border-bottom: 1px dashed #333;
+    margin-bottom: 5px;
+    padding-bottom: 5px;
+    color: rgb(29, 29, 29);
+}
+
+.single-menu h4 span{
+    float:right;
+    color: #4070f3;
+    font-style: italic;
+}
+
+

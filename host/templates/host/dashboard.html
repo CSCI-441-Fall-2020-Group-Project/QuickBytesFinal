@@ -27,6 +27,43 @@
             <div class="container">
                 <div class="row">
                     <div class="col">
+                        <table class="table">
+                            <thead>
+                                <th>Table Name</th>
+                                <th>Table Type</th>
+                                <th>Seat Count</th>
+                                <th>Status</th>
+                            </thead>
+                            <tbody>
+                                {% for table in tables %}
+                                {% if table.seats > 0 %}
+                                <tr>
+                                    <td>{{table.tableName}}</td>
+                                    <td>{{table.seats}}</td>
+                                    <td>{{table.tableType}}</td>
+                                    <td>{{table.status}}</td>
+                                </tr>
+                                {% endif %}
+                                {% endfor %}
+                                
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        {% if messages %}
+                        {% for message in messages %}
+                        <div class="alert alert-danger">
+                        <a class="close" href="#" data-dismiss="alert">x</a>
+                        {{ message }}
+                        </div>
+                        {% endfor %}
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
                         <div class="card">
                             <div class="card-body">
                                 <h4 class="card-title">Add Reservation</h4>

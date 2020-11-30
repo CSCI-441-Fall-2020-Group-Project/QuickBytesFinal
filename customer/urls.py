@@ -18,4 +18,8 @@ urlpatterns = [
     path('additems/<int:pk>/', views.addItems, name="add_items"),
     path('total/<int:pk>/', views.total, name="total"),
     path('delete_item/<int:pk>/', views.deleteItem, name="delete_item"),
+    path('payment/<int:pk>/', views.payment, name="payment"),
+    path('contactswitch/<int:pk>', views.lowContact, name="low_contact"),
+    path('service_request/<int:pk>', views.serviceRequested, name="service_request"),
+    
     ]

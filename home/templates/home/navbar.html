@@ -1,0 +1,42 @@
+{% load static %}
+
+<nav class="navbar navbar-light navbar-expand-lg fixed-top bg-white clean-navbar">
+    <div class="container"><a class="navbar-brand logo" data-bs-hover-animate="pulse" href="{% url 'index' %}" style="color: rgb(78,115,223);font-family: Oswald, sans-serif;">QuickBytes</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+        <div
+            class="collapse navbar-collapse" id="navcol-1">
+            <ul class="nav navbar-nav ml-auto">
+        <li class="nav-item" role="presentation"><a class="nav-link" data-bs-hover-animate="pulse" href="{% url 'index' %}">Home</a></li>
+        <li class="nav-item" role="presentation"><a class="nav-link" data-bs-hover-animate="pulse" href="{% url 'faq' %}">FAQ</a></li>
+        <li class="nav-item" role="presentation"><a class="nav-link" data-bs-hover-animate="pulse" href="{% url 'about-us' %}">About Us</a></li>
+        <li class="nav-item" role="presentation"><a class="nav-link" data-bs-hover-animate="pulse" href="{% url 'menu:index' %}">Menu</a></li>
+        <li class="nav-item" role="presentation"><a class="nav-link" data-bs-hover-animate="pulse" href="{% url 'login' %}">Login</a></li>
+        <li class="nav-item" role="presentation"><a class="nav-link" data-bs-hover-animate="pulse" href="{% url 'register' %}">Register</a></li>
+        <li class="nav-item dropdown">
+          <a class="dropdown-toggle nav-link" data-bs-hover-animate="pulse" data-toggle="dropdown" aria-expanded="false" href="#">Employees </a>
+          <div class="dropdown-menu" role="menu">
+            <a class="dropdown-item" role="presentation" href="{% url 'manager:dashboard' %}">Manager</a>
+            <a class="dropdown-item" role="presentation" href="{% url 'host:dashboard' %}">Host</a>
+            <a class="dropdown-item" role="presentation" href="{% url 'chef:dashboard' %}">Chef</a>
+            <a class="dropdown-item" role="presentation" href="{% url 'server:dashboard' %}">Server</a>
+            <a class="dropdown-item" role="presentation" href="{% url 'delivery:dashboard' %}">Delivery Liaison</a>
+            <a class="dropdown-item" role="presentation" href="{% url 'busser:dashboard' %}">Busser</a>
+          </div>
+        </li>
+
+        <!-- <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Employees
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="#">Manager</a>
+              <a class="dropdown-item" href="#">Host</a>
+              <a class="dropdown-item" href="#">Chef</a>
+              <a class="dropdown-item" href="#">Server</a>
+              <a class="dropdown-item" href="#">Delivery Liaison</a>
+              <a class="dropdown-item" href="#">Busser</a>
+            </div>
+          </li> -->
+            </ul>
+    </div>
+    </div>
+</nav>

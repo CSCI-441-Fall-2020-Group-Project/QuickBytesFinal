@@ -1,0 +1,38 @@
+<!-- For some reason the createview I use to handle discounts in the Manager section keep assuming the discount template is in customer. Maybe because I'm using your discount model? Idk.
+    So, in the end, I just dropped this here. Hopefully I'll have time to fix it before we turn in the final product. - Mark -->
+{% load static %}
+{% load crispy_forms_tags %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Create Discount - QuickBytes</title>
+    <link rel="stylesheet" href="{% static 'quickbytes/assets/bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
+    <link rel="stylesheet" href="{% static 'quickbytes/assets/fonts/fontawesome-all.min.css' %}">
+    <link rel="stylesheet" href="{% static 'quickbytes/assets/fonts/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'quickbytes/assets/fonts/ionicons.min.css' %}">
+    <link rel="stylesheet" href="{% static 'quickbytes/assets/fonts/fontawesome5-overrides.min.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+</head>
+
+{% include 'manager/navbar.html' %}
+            <div class="container-fluid">
+                <div class="card shadow">
+                    <div class="card-header py-3">
+                        <p class="text-primary m-0 font-weight-bold">Discount Creation</p>
+                    </div>
+                    <div class="card-body">
+                        <form method="post">
+                            {% csrf_token %}
+                            {{ form | crispy }}
+                            <div class="form-row d-xl-flex">
+                                <div class="col d-xl-flex"><button class="btn btn-primary btn-lg text-center d-xl-flex" value="Save" type="submit" style="margin: 6px;padding: 12px;">Submit</button></div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+{% include 'manager/footer.html' %}

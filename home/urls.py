@@ -11,5 +11,7 @@ urlpatterns = [
     path('register/', views.register, name='register'),
     path('makereservation/', views.makeReservation.as_view(),name="makeReservation"),
     path('reservation/<int:pk>/', views.viewReservation.as_view(), name='viewReservation'),
+    path('menu/', views.menu, name="menu" ),
+    
     
 ]

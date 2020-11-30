@@ -10,9 +10,11 @@
         <ul class="nav navbar-nav text-light" id="accordionSidebar">
             <li class="nav-item" role="presentation"><a class="nav-link" href="{% url 'host:dashboard' %}"><i class="fa fa-tachometer"></i><span>Host Dashboard</span></a></li>
             <li class="nav-item" role="presentation"><a class="nav-link" href="{% url 'host:profile' %}"><i class="fas fa-user"></i><span>Profile</span></a></li>
+            <li class="nav-item" role="presentation"><a class="nav-link" href="{% url 'host:waitlist' %}"><i class="far fa-sad-tear"></i><span>Waitlist</span></a></li>
             <li class="nav-item" role="presentation"><a class="nav-link" href="{% url 'host:order' %}"><i class="fas fa-carrot"></i><span>Submit Order</span></a></li>
             <li class="nav-item" role="presentation"><a class="nav-link" href="{% url 'host:information' %}"><i class="fas fa-sticky-note"></i><span>Restaurant Info</span></a></li>
             <li class="nav-item" role="presentation"><a class="nav-link" href="{% url 'host:complaints' %}"><i class="far fa-sad-tear"></i><span>Complaints</span></a></li>
+            
         </ul>
         <div class="text-center d-none d-md-inline"><button class="btn rounded-circle border-0" id="sidebarToggle" type="button"></button></div>
     </div>
@@ -25,7 +27,7 @@
                     <div class="input-group"><input class="bg-light form-control border-0 small" type="text" placeholder="Search for ...">
                         <div class="input-group-append"><button class="btn btn-primary py-0" type="button"><i class="fas fa-search"></i></button></div>
                     </div>
-                </form><span class="text-truncate">Val's Rib Shack - Host</span>
+                </form><span class="text-truncate">Quickbytes - Host</span>
                 <ul class="nav navbar-nav flex-nowrap ml-auto">
                     <li class="nav-item dropdown d-sm-none no-arrow"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#"><i class="fas fa-search"></i></a>
                         <div class="dropdown-menu dropdown-menu-right p-3 animated--grow-in" role="menu" aria-labelledby="searchDropdown">

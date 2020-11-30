@@ -28,9 +28,6 @@
                             <div class="col-md-6 text-nowrap">
                                 <a href={% url 'delivery:addcustomerorder' %}><button class="btn btn-primary" type="button" value="Add Order">Add Order</button></a>
                             </div>
-                            <div class="col-md-6">
-                                <div class="text-md-right dataTables_filter" id="dataTable_filter"><label><input type="search" class="form-control form-control-sm" aria-controls="dataTable" placeholder="Search"></label></div>
-                            </div>
                         </div>
                         <div class="table-responsive table mt-2" id="dataTable" role="grid" aria-describedby="dataTable_info">
                             <table class="table dataTable my-0" id="dataTable">
@@ -40,18 +37,17 @@
 					                    <th>Status</th>
                                         <th>Address</th>
                                         <th>Amount</th>
-                                        <th>Meal</th>
-                                        <th>Sides</th>
+                                        <th>Items</th>
                                         <th>Notes/Requests</th>
                                         <th>Pickup/Delivery</th>
                                         <th>Time</th>
-                                        <th>Make Order</th>
+                                        <th>OrderActions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
 				    {% for order in object_list %}
                                     <tr>
-					    <td><a href="{% url 'delivery:viewOrder' order.id %}">{{ order.customername }}</a></td>
+					    <td><a href="{% url 'delivery:vieworder' order.id %}">{{ order.customername }}</a></td>
 					    <td>{{ order.status }}</td>
 					    <td style="color: rgb(133,135,150);">{{ order.customername.street_address }}</td>
 					<td>{{ order.total }}</td>
@@ -64,15 +60,6 @@
 					    {% endfor %}
 					  </ul>
 					</td>
-                                        <td>
-					  <ul>
-				          {% for item in order.itemtable_set.all %}
-					    {% if item.item_type == 'Side' %}
-					      <li>{{ item.menuitem }}</li>
-					    {% endif %}
-					  {% endfor %}
-					  </ul>
-					</td>
 					<td>
 					  <ul>
 					    {% for item in order.itemtable_set.all %}
@@ -82,22 +69,23 @@
 					</td>
 					<td>{{ order.ordertype }}</td>
 					<td>{{ order.timeordered.time }}</td>
-					<td><a href="{% url 'delivery:sendtokitchen' order.id %}"><button class="btn btn-primary" data-toggle="tooltip" data-bs-tooltip="" type="button" title="This button sends the order to to the kitchen">Fire Up</button></a></td>
+					<td><a href="{% url 'delivery:sendtokitchen' order.id %}"><button class="btn btn-primary" data-toggle="tooltip" data-bs-tooltip="" type="button" title="This button sends the order to to the kitchen">Fire Up</button></a>
+                    <a href="{% url 'delivery:editcustomerorder' order.id %}"><button class="btn btn-primary" data-toggle="tooltip" data-bs-tooltip="" type="button" title="Edit customer Order">Edit</button></a>
+                    <a href="{% url 'delivery:delivered' order.id %}"><button class="btn btn-primary" data-toggle="tooltip" data-bs-tooltip="" type="button" title="This button sends the order to to the kitchen">Deliver</button></a></td>
                                     </tr>
 				    {% endfor %}
                                 </tbody>
                                 <tfoot>
                                     <tr>
                                         <td><strong>Name</strong></td>
-					<td><strong>Status</strong></td>
+					                    <td><strong>Status</strong></td>
                                         <td><strong>Address</strong></td>
                                         <td><strong>Amount</strong></td>
-                                        <td><strong>Meal</strong></td>
-                                        <td><strong>Sides</strong></td>
+                                        <td><strong>Items</strong></td>
                                         <td><strong>Notes/Requests</strong></td>
                                         <td><strong>Pickup/Delivery</strong></td>
                                         <td><strong>Time</strong></td>
-                                        <td><strong>Make Order</strong></td>
+                                        <td><strong>Order Actions</strong></td>
                                     </tr>
                                 </tfoot>
                             </table>

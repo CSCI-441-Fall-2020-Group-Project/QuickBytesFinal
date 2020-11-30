@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+{% load static %}
+{% load crispy_forms_tags %}
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Restock - QuickBytes</title>
+    <link rel="stylesheet" href="{% static 'quickbytes/assets/bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
+    <link rel="stylesheet" href="{% static 'quickbytes/assets/fonts/fontawesome-all.min.css' %}">
+    <link rel="stylesheet" href="{% static 'quickbytes/assets/fonts/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'quickbytes/assets/fonts/ionicons.min.css' %}">
+    <link rel="stylesheet" href="{% static 'quickbytes/assets/fonts/fontawesome5-overrides.min.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+</head>
+
+{% include 'manager/navbar.html' %}
+            <div class="container-fluid">
+                <h3 class="text-dark mb-4">Restock</h3>
+                <div class="card shadow"></div>
+                <div class="row">
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">Select a set to restock</h4>
+                                <p>You've already set up the restock option! Choose what category to restock below.</p>
+                                <form method="POST">
+                                    {% csrf_token %}
+                                    {{ form | crispy }}
+                                    <div class="form-row">
+                                        <div class="col"><button class="btn btn-primary btn-block" type="submit">Submit</button></div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">Restock List</h4>
+                                <p class="card-text">Here are your past restock orders.</p>
+                                <div class="row">
+                                    <div class="table-responsive table mt-2" id="dataTable" role="grid" aria-describedby="dataTable_info">
+                                        <table class="table dataTable my-0" id="dataTable">
+                                            <thead>
+                                                <tr>
+                                                    <th>Category</th>
+                                                    <th>Date</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                {% for item in restock %}
+                                                <tr>
+                                                    <td>{{ item.restock_option }}</td>
+                                                    <td>{{ item.restock_date }}</td>
+                                                </tr>
+                                                {% endfor %}
+                                            </tbody>
+                                            <tfoot>
+                                                <tr>
+                                                    <td><strong>Category</strong></td>
+                                                    <td><strong>Date</strong></td>
+                                                </tr>
+                                            </tfoot>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% include 'manager/footer.html' %}

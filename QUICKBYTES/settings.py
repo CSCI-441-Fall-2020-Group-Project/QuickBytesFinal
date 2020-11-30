@@ -54,8 +54,7 @@ INSTALLED_APPS = [
     'django_tables2',
     'crispy_forms', #Used to create nice looking forms easily 
     'mathfilters',
-    
-    
+    'django_extensions',
 ]
 
 MIDDLEWARE = [

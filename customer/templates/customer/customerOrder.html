@@ -27,7 +27,48 @@
                     <!-- <h3 class="text-dark mb-0">Create Order</h3> -->
                 </div>
             </div>
+            
             <div class="container text-center">
+                <h4>Available Tables</h4>
+
+                <div class="row">
+                    <div class="col">
+                        <table class="table">
+                            <thead>
+                                <th>Table Name</th>
+                                <th>Table Type</th>
+                                <th>Seat Count</th>
+                                <th>Status</th>
+                            </thead>
+                            <tbody>
+                                {% for table in tables %}
+                                {% if table.status == "available" %}
+                                
+                                <tr>
+                                    <td>{{table.tableName}}</td>
+                                    <td>{{table.seats}}</td>
+                                    <td>{{table.tableType}}</td>
+                                    <td>{{table.status}}</td>
+                                </tr>
+                                {% endif %}
+                                {% endfor %}
+                                
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        {% if messages %}
+                        {% for message in messages %}
+                        <div class="alert alert-danger">
+                        <a class="close" href="#" data-dismiss="alert">x</a>
+                        {{ message }}
+                        </div>
+                        {% endfor %}
+                        {% endif %}
+                    </div>
+                </div>
                 <div class="row">
                     <div class="col">
                         <div class="card">
@@ -42,7 +83,7 @@
                                     {{form | crispy}}
                                     
                                     <br>
-                                    <input type="submit" name="Submit">
+                                    <input class="btn btn-primary" type="submit" name="Submit">
                                 </form>
                                 {% endblock %}
 
@@ -64,22 +105,35 @@
                                                     <th>Order Total</th>
                                                     <th>Status</th>
                                                     <th>Time Ordered</th>
+                                                    <th>Paid</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 {% for order in orders reversed %}
                                                 <tr>
                                                     {% if order.customername == customer %}
+                                                    
                                                     <td>{{order.customername.first_name}} {{order.customername.last_name}}</td>
                                                     <td>{{order.ordertype}}</td>
                                                     <td>{{order.tablenumber.tableName}}</td>
                                                     <td>${{order.total}}</td>
                                                     <td>{{order.status}}</td>
                                                     <td>{{order.timeordered}}</td>
+                                                    {% if order.paid == True %}
+                                                    <td>✓</td>
+                                                    {% endif %}
+                                                    {% if order.paid == False %}
+                                                    <td>x</td>
+                                                    {% endif %}
+                                                   
                                                     <td><a href="{% url 'customer:add_items' order.id %}" class="btn btn-info">View/Update Order</a></td>
                                                     <td><a href="{% url 'customer:cancel_order' order.id %}" class="btn btn-danger">Cancel Order</a></td>
-                                                    <td></td>
-
+                                                    {% if order.paid == False %}
+                                                    <td><a href="{% url 'customer:payment' order.id %}" class='btn btn-primary'>Pay Order</a></td>
+                                                    {% endif %}
+                                                    
+                                                    
+                                                    
                                                     <!-- <td><a style="color:white" class="btn btn-info">Update</a> -->
                                                      {% endif %}
                                                 </tr>
@@ -87,6 +141,8 @@
                                                 {% endfor %}
                                             </tbody>
                                         </table>
+
+                                        
                                     </div>
                                 </div>
                             </div>

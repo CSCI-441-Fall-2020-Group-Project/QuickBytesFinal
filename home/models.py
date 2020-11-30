@@ -29,8 +29,8 @@ class tableTable(models.Model):
             ]
 
     statusChoices = [
-            ('cleaned', 'cleaned'),
-            ('seated', 'seated'),
+            ('available', 'available'),
+            ('occupied', 'occupied'),
             ('closed', 'closed'),
             ('reserved', 'reserved'),
             ]

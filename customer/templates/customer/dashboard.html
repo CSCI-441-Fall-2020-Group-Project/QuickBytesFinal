@@ -28,6 +28,18 @@
                     <h3 class="text-dark mb-0">Hey {{customer.first_name}}, good to see you again!</h3>
                 </div>
             </div>
+            <div class="row">
+                <div class="col">
+                    {% if messages %}
+                    {% for message in messages %}
+                    <div class="alert alert-danger">
+                    <a class="close" href="#" data-dismiss="alert">x</a>
+                    {{ message }}
+                    </div>
+                    {% endfor %}
+                    {% endif %}
+                </div>
+            </div>
             <div class="container">
                 <div class="row">
                     <div class="col">
@@ -46,8 +58,8 @@
                             </div>
                             <div class="card">
                                 <div class="card-body">
-                                    <h4 class="card-title">Need service?<i class="fa fa-flag float-right"></i></h4>
-                                    <p class="card-text">Click here to call a host/hostess for assistance.</p><button class="btn btn-primary" type="submit">Call Host</button></div>
+                                    <h4 class="card-title">Need Service?<i class="fa fa-flag float-right"></i></h4>
+                                    <p class="card-text">Click here to call a host/hostess for assistance.</p><a style="color:white;" href="{% url 'customer:service_request' customer.id %}" class="btn btn-primary" type="submit">Call Host</a></div>
                             </div>
                         </div>
                     </div>
@@ -59,7 +71,7 @@
                         <div class="card-group">
                             <div class="card">
                                 <div class="card-body">
-                                    <h4 class="card-title">Place Order<i class="fa fa-shopping-cart float-right" style="margin: 0px;padding: 0px;"></i></h4>
+                                    <h4 class="card-title">View Our Menu<i class="fa fa-shopping-cart float-right" style="margin: 0px;padding: 0px;"></i></h4>
                                     <ul></ul><a class="btn btn-primary" role="button" href="{% url 'menu:index' %}">View Menu</a></div>
                             </div>
                             <div class="card">
@@ -71,7 +83,37 @@
                     </div>
                 </div>
             </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <div class="card-group">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4>Low Contact Mode</h4>
+                                    <p>This setting alerts your server that you will order and pay digitally, without contact from our staff.</p>
+                                    {% if customer.low_contact %}</p>
+                                        <p>Low Contact Mode is: <b>Enabled</b></p>
+                                        <a class="btn btn-primary" href="{% url 'customer:low_contact' customer.id %}">Disable</a>
+                                    {% endif %}
+                                    {% if not customer.low_contact %}</p>
+                                        <p>Low Contact Mode is: <b>Disabled</b></p>
+                                        <a class="btn btn-primary" href="{% url 'customer:low_contact' customer.id %}">Enable</a>
+
+                                    {% endif %}
+
+                                      
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
+        <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+        <script type="text/javascript">
+
+        
+        </script>
         <footer class="bg-white sticky-footer">
             <div class="container my-auto">
                 <div class="text-center my-auto copyright"><span>Copyright © QuickBytes 2020</span></div>

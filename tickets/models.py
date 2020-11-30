@@ -22,6 +22,8 @@ class Orderstable(models.Model):
             ('delivered', 'Delivered'),
             ]
     #customername = models.CharField(max_length=255)
+    BOOL_CHOICES = ((True, 'Paid'),(False,'Not_Paid'))
+
     customername = models.ForeignKey(Customer, on_delete=models.CASCADE, to_field='id', db_column='customername')
     ordertype = models.CharField(max_length=10, choices=order_type, default='dine-in')
     status = models.CharField(null=True, blank=True, max_length=255, choices=status, default='orderTaken')
@@ -30,6 +32,9 @@ class Orderstable(models.Model):
     tablenumber = models.ForeignKey(tableTable, on_delete=models.CASCADE, to_field='id', db_column='tablenumber', null=True, blank=True)
     total = models.DecimalField(max_digits = 7, decimal_places=2, default=0.0,null=True, blank=True)
     message = models.CharField(max_length=255, null=True, blank=True)
+    paid = models.BooleanField(choices=BOOL_CHOICES, default=False)
+    requestedtime = models.DateTimeField(auto_now=False, null=True, blank=True)
+
 
 
     def __str__(self):
@@ -47,15 +52,24 @@ class Itemtable(models.Model):
             ('completed', 'completed'),
             ('delivered', 'delivered'),
             ]
+    
     ordernumber = models.ForeignKey(Orderstable, on_delete=models.CASCADE, to_field='id', db_column='ordernumber')
     menuitem = models.ForeignKey(Menu_Item, on_delete=models.CASCADE, to_field='id', db_column='menuitem', default=1)
     specialinstructions = models.CharField(max_length=255, blank=True, null=True)
     allergies = models.CharField(max_length=255, blank=True, null=True)
     server = models.CharField(max_length=255, blank=True, null=True)
-    ordertime = models.DateTimeField(blank=True, null=True)
-    completiontime = models.DateTimeField(blank=True, null=True)
     status = models.CharField(max_length=255, choices=status, blank=True, null=True)
     quantity = models.IntegerField(default=1)
 
     def __str__(self):
         return str(self.ordernumber) + " - " + str(self.menuitem)
+
+class Alertstable(models.Model):
+        sender = models.CharField(max_length=10)
+        receiver = models.CharField(max_length=10)
+        message = models.CharField(max_length=50)
+        time = models.TimeField(auto_now_add=True)
+        priority = models.BooleanField(default=False)
+
+        def __str__(self):
+                return str(self.message) + " : " + str(self.sender) + " " + str(self.time)

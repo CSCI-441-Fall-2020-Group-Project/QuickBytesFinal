@@ -5,7 +5,7 @@ from django.urls import reverse
 from django.views.generic import (CreateView, DetailView, ListView, UpdateView, DeleteView)
 from datetime import datetime
 
-from . models import Orderstable, Itemtable
+from . models import Orderstable, Itemtable, Alertstable
 
 # Create your views here.
 class addCustomerOrder(CreateView):
@@ -19,14 +19,13 @@ class addCustomerOrder(CreateView):
 class listOrders(ListView):
     model = Orderstable
 
-
-
+'''
 class viewOrder(DetailView):
     model = Orderstable
 
     def get_success_url(self):
         return reverse('tickets:viewOrder', kwargs={'pk': self.object.pk})    
-
+'''
 
 class sendOrder(UpdateView):
     model = Orderstable
@@ -44,6 +43,7 @@ class sendOrder(UpdateView):
         Orderstable.save()
         return HttpResponseRedirect(self.get_success_url())
 
+
 class addItem(CreateView):
     model = Itemtable
     fields = ['ordernumber', 'menuitem', 'specialinstructions', 'allergies', 'server', 'ordertime', 'completiontime', 'status'] 
@@ -53,7 +53,7 @@ class addItem(CreateView):
     
     def get_initial(self, **kwargs):
         initial = super(CreateView, self).get_initial()
-        initial['order'] = self.kwargs['pk']
+        initial['ordernumber'] = self.kwargs['pk']
         return initial
     
 
@@ -64,9 +64,27 @@ class editItem(UpdateView):
     def get_success_url(self):
         return reverse('tickets:viewOrder', kwargs={'pk': self.object.pk})  
 
+
 class editOrder(UpdateView):
     model = Orderstable
     fields = ['customername', 'ordertype', 'status', 'timeordered', 'timecompleted', 'tablenumber', 'total', 'message']
 
     def get_success_url(self):
         return reverse('tickets:viewOrder', kwargs={'pk': self.object.pk})
+
+class addAlert(CreateView):
+    model = Alertstable
+    fields = [ 'sender', 'receiver', 'message', 'priority']
+
+    def get_success_url(self):
+        return reverse('tickets:viewAlert', kwargs={'pk': self.object.pk})
+
+class listAlerts(ListView):
+    model = Alertstable
+
+
+class viewAlert(DetailView):
+    model = Alertstable
+
+    def get_success_url(self):
+        return reverse('tickets:viewAlert', kwargs={'pk': self.object.pk})  

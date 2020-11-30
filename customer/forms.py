@@ -1,7 +1,7 @@
 from django.forms import ModelForm, DateInput
 from home.models import Reservation
 from tickets.models import Orderstable, Itemtable
-from .models import Complaint, Customer
+from .models import Complaint, Customer, Payment
 from django import forms
 
 
@@ -26,6 +26,11 @@ class OrderForm(ModelForm):
         model = Orderstable
         fields = ['ordertype', 'tablenumber']
 
+
+class PaymentForm(ModelForm):
+    class Meta:
+        model = Payment
+        fields = '__all__'
 
 class ItemtableForm(ModelForm):
     class Meta:

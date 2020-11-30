@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+{% include 'chef/Navbar.html' %}
+            <div class="container-fluid">
+                <div class="d-sm-flex justify-content-between align-items-center mb-4">
+			<h3 class="text-dark mb-0">Supply Order</h3>
+                </div>
+            </div>
+            <div class="container" style="padding: auto;margin: auto;">
+                <div class="row">
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5 class="mb-0">Order List</h5>
+                                <a href="{% url 'chef:addsupply'%}"><input type="button" class="btn btn-success" value="Add"/></a>
+                            </div>
+                            <div class="card-body text-center">
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>Order Number</th>
+                                                <th>Ingredient</th>
+                                                <th>Quantity</th>
+                                                <th>Status</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+					  {% for order in object_list %}
+					    <tr>
+                            <td class="text-truncate">{{ order.id }}</td>
+                            <td class="text-truncate">{{ order.ingredient }}</td>  
+                            <td class="text-truncate">{{ order.order }}</td>
+                            <td class="text-truncate">{{ order.status }}</td>
+                            <!--<td><button class="btn btn-primary" data-toggle="tooltip" data-bs-tooltip="" type="button" title="Clicking this will remove the order from the queue"></button><br>-->
+                            <td><span><a href="{% url 'chef:editsupply' order.id %}"><input type="button" class="btn btn-primary" value="Edit"/></a>
+                            <a href="{% url 'chef:deletesupply' order.id %}"><input type="button" class="btn btn-danger" value="Delete"/></a></span></td>
+                        </tr>
+                      {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+            <div class="container">
+                <div class="card" style="height: -5px;padding: -2px;margin: 26px;"></div>
+            </div>
+        </div>
+        <footer class="bg-white sticky-footer">
+            <div class="container my-auto">
+                <div class="text-center my-auto copyright"><span>Copyright © QuickBytes 2020</span></div>
+            </div>
+        </footer>
+    </div><a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a></div>
+    <script src="{% static 'quickbytes/assets/js/jquery.min.js' %}"></script>
+    <script src="{% static 'quickbytes/assets/bootstrap/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'quickbytes/assets/js/chart.min.js' %}"></script>
+    <script src="{% static 'quickbytes/assets/js/bs-init.js' %}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.js"></script>
+    <script src="{% static 'quickbytes/assets/js/theme.js' %}"></script>
+</body>
+
+</html>

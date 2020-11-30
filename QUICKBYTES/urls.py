@@ -33,3 +33,5 @@ urlpatterns = [
     path('server/', include('server.urls')),
     path('register/', v.register, name="register"),
 ]
+
+

@@ -1,0 +1,91 @@
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'customer/styles.css'%}">
+
+<html>
+    <head>
+        <title>Quickbytes - Menu</title>
+    </head>
+    <body>
+        <div class="wrapper">
+            <div class="title">
+                <h4><span></span>Appetizers</h4>
+            </div>
+            <div class="menu">
+            
+                {% for item in all_menu_items %}
+                {% if item.item_type == 'Appetizer' %}
+                <div class="single-menu">
+                    <img src="" >
+                    <div class="menu-content">
+                        <h4>{{item.name}} <span>{{item.price}}</span></h4>
+                        <p>{{item.description}}</p>
+                    </div>
+                </div>
+                {% endif %}
+                {% endfor %}
+            
+            </div>
+
+            <div style="margin-top:30px;"class="title">
+                <h4><span></span>Entrees</h4>
+            </div>
+            <div class="menu">
+            
+                {% for item in all_menu_items %}
+                {% if item.item_type == 'Entree' %}
+                <div class="single-menu">
+                    <img src="" >
+                    <div class="menu-content">
+                        <h4>{{item.name}} <span>{{item.price}}</span></h4>
+                        <p>{{item.description}}</p>
+                    </div>
+                </div>
+                {% endif %}
+                {% endfor %}
+            
+            </div>
+
+            <div style="margin-top:30px;"class="title">
+                <h4><span></span>Desserts</h4>
+            </div>
+            <div class="menu">
+            
+                {% for item in all_menu_items %}
+                {% if item.item_type == 'Dessert' %}
+                <div class="single-menu">
+                    <img src="" >
+                    <div class="menu-content">
+                        <h4>{{item.name}} <span>{{item.price}}</span></h4>
+                        <p>{{item.description}}</p>
+                    </div>
+                </div>
+                {% endif %}
+                {% endfor %}
+            
+            </div>
+
+
+
+            <div style="margin-top:30px;"class="title">
+                <h4><span></span>Drinks</h4>
+            </div>
+            <div class="menu">
+            
+                {% for item in all_menu_items %}
+                {% if item.item_type == 'Wine' or item.item_type == 'Cocktail' or item.item_type == 'Beer' %}
+                <div class="single-menu">
+                    <img src="" >
+                    <div class="menu-content">
+                        <h4>{{item.name}} <span>{{item.price}}</span></h4>
+                        <p>{{item.description}}</p>
+                    </div>
+                </div>
+                {% endif %}
+                {% endfor %}
+            
+            </div>
+        </div>
+        
+    </body>
+</html>

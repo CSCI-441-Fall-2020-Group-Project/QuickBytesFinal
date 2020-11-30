@@ -41,14 +41,6 @@ class supplies(CreateView):
     def get_success_url(self):
         return reverse('busser:dashboard')
 
-class addTable(CreateView):
-    model=Table_Status
-    template_name='busser/add_table.html'
-    form_class = Table_Status_Form
-
-    def get_success_url(self):
-        return reverse('busser:dashboard')
-
 class queue(ListView):
     queryset = Table_Status.objects.filter(status='Dirty')
     context_object_name = 'object'

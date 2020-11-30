@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic import (CreateView, DetailView, ListView, UpdateView, DeleteView)
 from django.urls import reverse_lazy
 from datetime import datetime
@@ -7,6 +7,7 @@ from re import sub
 
 from tickets.models import Orderstable, Itemtable
 from . forms import SendBackForm
+from . models import SupplyOrder
 from manager.models import Worker_Complaint                                                                         
 from django.http import HttpResponse                                                                                                                                                        
 from manager.models import Worker_Complaint
@@ -81,5 +82,41 @@ class create(CreateView):
 
     def get_success_url(self):
         return reverse('chef:complaints')
+
+
+class listSupply(ListView):
+    model = SupplyOrder
+
+    def get_queryset(self):
+        qs = super().get_queryset()
+        return qs.exclude(status='Received')
+
+    def get_success_url(self):
+        return reverse('chef:dashboard')
+
+
+class addSupply(CreateView):
+    model = SupplyOrder
+    fields = ['ingredient', 'order', 'status']
+
+    def get_success_url(self):
+        return reverse('chef:listsupply')
+
+
+class editSupply(UpdateView):
+    model = SupplyOrder
+    fields = ['ingredient', 'order', 'status']
+
+    def get_success_url(self):
+        return reverse('chef:listsupply')
+
+    
+class deleteSupply(DeleteView):
+    model = SupplyOrder
+    #template_name = 'chef/deletesupply.html'
+
+    def get_success_url(self):
+        return reverse('chef:listsupply')
+
 
 

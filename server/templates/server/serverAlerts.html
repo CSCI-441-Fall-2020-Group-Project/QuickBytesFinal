@@ -24,12 +24,15 @@
             <div class="card">
                 <div class="card-body">
                     <h4 class="card-title">Order Alerts</h4>
-                    <div class="alert alert-success" role="alert">
-                        Order for <b>James</b> at table <b>A2</b> is ready from <b>2:21 p.m.</b>!
-                    </div>
-                    <div class="alert alert-success" role="alert">
-                        Order for <b>George</b> at table <b>A1</b> is ready from <b>2:43 p.m.</b>!
-                    </div>
+                    {% for alert in recentAlerts %}
+                        {% if alert.receiver == "Server" %}
+                            {% if alert.sender == "Chef" %}
+                                <div class="alert alert-success" role="alert">
+                                    {{ alert.message }}
+                                </div>
+                            {% endif %}
+                        {% endif %}
+                    {% endfor %}
                 </div>
             </div>
             <br>
@@ -38,12 +41,15 @@
                 <div class="card-body">
                     <h4 class="card-title">Customer Alerts</h4>
                     <h6 class="text-muted card-subtitle mb-2">Try to see each alerted table within five minutes</h6>
-                    <div class="alert alert-danger" role="alert">
-                        Table <b>A1</b> called at <b>3:10 pm</b>!
-                    </div>
-                    <div class="alert alert-danger" role="alert">
-                        Table <b>B1</b> called at <b>2:56 pm</b>!
-                    </div>
+                    {% for alert in recentAlerts %}
+                        {% if alert.receiver == "Server" %}
+                            {% if alert.sender == "Customer" %}
+                                <div class="alert alert-success" role="alert">
+                                    {{ alert.message }}
+                                </div>
+                            {% endif %}
+                        {% endif %}
+                    {% endfor %}
                 </div>
             </div>
             <br>
@@ -54,15 +60,6 @@
                     <h6 class="text-muted card-subtitle mb-2">Try to see each alerted table within five minutes</h6>
                     <div class="alert alert-primary" role="alert">
                         Table <b>A1</b> cleaned at <b>3:25 pm</b>!
-                    </div>
-                    <div class="alert alert-primary" role="alert">
-                        Table <b>B1</b> cleaned at <b>3:09 pm</b>!
-                    </div>
-                    <div class="alert alert-primary" role="alert">
-                        Table <b>B2</b> cleaned at <b>2:46 pm</b>!
-                    </div>
-                    <div class="alert alert-primary" role="alert">
-                        Table <b>A1</b> cleaned at <b>2:23 pm</b>!
                     </div>
                 </div>
             </div>

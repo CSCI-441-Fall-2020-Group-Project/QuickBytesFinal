@@ -14,4 +14,6 @@ urlpatterns = [
   path('additems/<int:pk>/', views.addItems, name="additems"),
   path('delete_item/<int:pk>/', views.deleteItem, name="delete_item"),
   path('total/<int:pk>/', views.total, name="total"),
+  path('tables/', views.tables.as_view(), name="tables"),
+  path('setdirty/<int:pk>', views.setDirty, name="setdirty"),
 ]

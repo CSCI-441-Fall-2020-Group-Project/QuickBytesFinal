@@ -1,9 +1,20 @@
 from django.forms import ModelForm, Textarea
 from tickets.models import Orderstable, Itemtable
+from home.models import tableTable
 from manager.models import Worker_Complaint
 from home.models import Reservation
+from .models import WaitList
 from django import forms 
 
+
+
+
+class WaitListForm(ModelForm):
+    class Meta:
+        model = WaitList
+        fields = ('customer', 'guestCount')
+
+        
 class Worker_Complaint_Form(ModelForm):
     class Meta:
         model = Worker_Complaint
