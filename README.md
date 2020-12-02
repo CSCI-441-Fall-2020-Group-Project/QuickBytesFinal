@@ -50,11 +50,18 @@ Busser Page: http://35.188.32.57/busser/dashboard/
 
 Chef Page: http://35.188.32.57/chef/dashboard/
 
-Example Users, group, and passwords
+Example Users, group, and passwords:
+
 Dmurray, chef, quickbytes123
+
 jrobes, host, quickbytes123
+
 j.smithy, customer, quickbytes123
+
 KBishop, delivery, examplepassword
+
 C.Kent, server, quickbytes123
+
 P.Parker, busser, quickbytes123
+
 B.Wayne, manager, quickbytes123
