@@ -30,8 +30,9 @@ This allows everyone to be connected through the single system so they can inter
 
 How to use QUICKBYTES 
 
-We will implement a login feature from the homepage that redirects the user to their appropriate page. 
-However, until we get the login feauture built, you can access individual applications through the links below
+To view the customer features, use the register function to create an account and log in. Logging in will direct you to your customer account.
+
+To view the functionality for the other roles, you can access each role from the dropdown menu on the homepage, or follow the links below
 
 Homepage: http://35.188.32.57/
 
@@ -48,3 +49,19 @@ Delivery Page: http://35.188.32.57/delivery/dashboard
 Busser Page: http://35.188.32.57/busser/dashboard/
 
 Chef Page: http://35.188.32.57/chef/dashboard/
+
+Example Users, group, and passwords:
+
+Dmurray, chef, quickbytes123
+
+jrobes, host, quickbytes123
+
+j.smithy, customer, quickbytes123
+
+KBishop, delivery, examplepassword
+
+C.Kent, server, quickbytes123
+
+P.Parker, busser, quickbytes123
+
+B.Wayne, manager, quickbytes123
