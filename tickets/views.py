@@ -1,3 +1,10 @@
+'''
+  // written by: Patrick Carra
+  // tested by: Patrick Carra
+  // debugged by: Patrick Carra
+  // etc.
+'''
+
 from django.shortcuts import render, redirect
 from django.http import HttpResponseRedirect
 from django.urls import reverse
@@ -19,13 +26,6 @@ class addCustomerOrder(CreateView):
 class listOrders(ListView):
     model = Orderstable
 
-'''
-class viewOrder(DetailView):
-    model = Orderstable
-
-    def get_success_url(self):
-        return reverse('tickets:viewOrder', kwargs={'pk': self.object.pk})    
-'''
 
 class sendOrder(UpdateView):
     model = Orderstable

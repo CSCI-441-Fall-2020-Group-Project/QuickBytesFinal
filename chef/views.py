@@ -1,3 +1,9 @@
+'''
+  // written by: Patrick Carra
+  // tested by: Patrick Carra
+  // debugged by: Patrick Carra
+  // etc.
+'''
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic import (CreateView, DetailView, ListView, UpdateView, DeleteView)
 from django.urls import reverse_lazy

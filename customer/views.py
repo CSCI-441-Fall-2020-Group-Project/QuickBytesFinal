@@ -22,7 +22,8 @@ def dashboard(request, pk):
 
 def serviceRequested(request,pk):
     customer = Customer.objects.get(id=pk)
-    alert = Alertstable(sender=customer.first_name, receiver="server", message=customer.first_name + " " + customer.last_name + " is requesting service")
+    orders = Customer.orderstable_set.all()
+    alert = Alertstable(sender="Customer", receiver="Server", message=customer.first_name + " " + customer.last_name + " is requesting service")
     alert.save()
     messages.success(request, "Service request placed. Staff will be with you shortly")
     context = {"customer": customer}

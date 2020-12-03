@@ -8,6 +8,12 @@ https://docs.djangoproject.com/en/3.1/topics/settings/
 
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
+
+
+  // written by: Patrick Carra
+  // tested by: Patrick Carra
+  // debugged by: Patrick Carra
+  // etc.
 """
 
 from pathlib import Path

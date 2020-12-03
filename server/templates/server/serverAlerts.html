@@ -24,6 +24,7 @@
             <div class="card">
                 <div class="card-body">
                     <h4 class="card-title">Order Alerts</h4>
+                   
                     {% for alert in recentAlerts %}
                         {% if alert.receiver == "Server" %}
                             {% if alert.sender == "Chef" %}

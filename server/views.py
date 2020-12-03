@@ -25,7 +25,15 @@ def dashboard(request):
     return render(request, template, context) 
 
 def alerts(request):
-    context = {'text': 'Server Alerts'}
+    form = AlertstableForm()
+    if request.method == 'POST':
+        form = AlertstableForm(request.POST)
+        if form.is_valid:
+            alert = form.save()
+            return redirect('/server/serverAlerts/')
+    orders = Orderstable.objects.all()
+    recentAlerts = Alertstable.objects.all()
+    context = {'text': 'Server Alerts','recentAlerts':recentAlerts, "orders":orders}
     template = 'server/serverAlerts.html'
     return render(request, template, context)
 
@@ -132,13 +140,14 @@ class viewAlert(DetailView):
         return reverse('tickets:viewAlert', kwargs={'pk': self.object.pk})  
 
 def alert(request):
-    form = AlertstableForm()
-    if request.method == 'POST':
-        form = AlertstableForm(request.POST)
-        if form.is_valid:
-            alert = form.save()
-            return redirect('/server/serverAlerts/')
+    # form = AlertstableForm()
+    # if request.method == 'POST':
+    #     form = AlertstableForm(request.POST)
+    #     if form.is_valid:
+    #         alert = form.save()
+    #         return redirect('/server/serverAlerts/')
+    orders = Orderstable.objects.all()
     recentAlerts = Alertstable.objects.all()
-    context = {'text': 'Server Alerts', 'form':form, 'recentAlerts':recentAlerts}
+    context = {'text': 'Server Alerts','recentAlerts':recentAlerts, "orders":orders}
     template = 'server/serverAlerts.html'
     return render(request, template, context) 

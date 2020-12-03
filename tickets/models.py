@@ -1,3 +1,10 @@
+'''
+  // written by: Patrick Carra
+  // tested by: Patrick Carra
+  // debugged by: Patrick Carra
+  // etc.
+'''
+
 from django.db import models
 from django.urls import reverse
 

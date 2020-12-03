@@ -1,3 +1,10 @@
+'''
+  // written by: Patrick Carra
+  // tested by: Patrick Carra
+  // debugged by: Patrick Carra
+  // etc.
+'''
+
 from django.contrib.auth.models import AnonymousUser
 from django.http import Http404
 from django.test import TestCase, RequestFactory
