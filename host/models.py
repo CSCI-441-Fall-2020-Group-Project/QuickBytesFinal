@@ -1,3 +1,9 @@
+'''
+  // written by: Kegan Ronholt
+  // tested by: Kegan Ronholt
+  // debugged by: Kegan Ronholt
+'''
+
 from django.db import models
 from customer.models import Customer
 

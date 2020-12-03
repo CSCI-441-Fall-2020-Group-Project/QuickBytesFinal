@@ -1,3 +1,9 @@
+'''
+  // written by: Kegan Ronholt
+  // tested by: Kegan Ronholt
+  // debugged by: Kegan Ronholt
+'''
+
 from django.shortcuts import render, redirect
 from .models import Customer, Complaint, Discount, Payment
 from home.models import Reservation, tableTable
@@ -9,7 +15,6 @@ from django.db.models import Sum
 from decimal import Decimal
 
 
-
 # Create your views here.
 def dashboard(request, pk):
     customer = Customer.objects.get(id=pk)
@@ -18,8 +23,7 @@ def dashboard(request, pk):
     template = 'customer/dashboard.html'
     return render(request, template, context) 
 
-
-
+#This function allows the customer to request service from the server. This proccesses the button click and sends the alert to the server
 def serviceRequested(request,pk):
     customer = Customer.objects.get(id=pk)
     orders = Customer.orderstable_set.all()

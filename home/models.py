@@ -1,3 +1,9 @@
+'''
+  // written by: Patrick Carra 
+  // tested by: Patrick Carra 
+  // debugged by: Patrick Carra 
+'''
+
 from django.db import models
 from django import forms
 from datetime import datetime

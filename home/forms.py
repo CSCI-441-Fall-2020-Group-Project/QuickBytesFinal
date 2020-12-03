@@ -1,3 +1,9 @@
+'''
+  // written by: Patrick Carra & Kegan Ronholt
+  // tested by: Patrick Carra & Kegan Ronholt
+  // debugged by: Patrick Carra & Kegan Ronholt
+'''
+
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User

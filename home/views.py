@@ -1,3 +1,9 @@
+'''
+  // written by: Patrick Carra & Kegan Ronholt
+  // tested by: Patrick Carra & Kegan Ronholt
+  // debugged by: Patrick Carra & Kegan Ronholt
+'''
+
 from django.template import loader
 from django.shortcuts import render
 from django.views.generic import (CreateView, DetailView, ListView, UpdateView, DeleteView)

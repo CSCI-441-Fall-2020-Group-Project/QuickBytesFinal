@@ -1,3 +1,9 @@
+'''
+  // written by: Kegan Ronholt
+  // tested by: Kegan Ronholt
+  // debugged by: Kegan Ronholt
+'''
+
 from django.urls import path
 from . import views
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns

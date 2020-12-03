@@ -1,3 +1,9 @@
+'''
+  // written by: Kegan Ronholt
+  // tested by: Kegan Ronholt
+  // debugged by: Kegan Ronholt
+'''
+
 from django.shortcuts import loader
 from django.http import HttpResponse 
 from django.shortcuts import render, get_object_or_404
