@@ -65,3 +65,6 @@ C.Kent, server, quickbytes123
 P.Parker, busser, quickbytes123
 
 B.Wayne, manager, quickbytes123
+
+
+Demo slides and Project reports are found in the docs folder
