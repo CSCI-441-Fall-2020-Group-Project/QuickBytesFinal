@@ -1,5 +1,5 @@
 '''
-  // written by: Patrick Carra
+  // written by: Patrick Carra, Clint Ryan
   // tested by: Patrick Carra
   // debugged by: Patrick Carra
   // etc.

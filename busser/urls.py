@@ -1,3 +1,10 @@
+'''
+  // written by: Mila Hose
+  // tested by: Mila Hose
+  // debugged by: Mila Hose
+  // etc.
+'''
+
 from django.urls import path
 from . import views
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns

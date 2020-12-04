@@ -1,7 +1,12 @@
 from django.urls import path
 from . import views
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
-
+'''
+  // written by: Mark Norfolk & Patrick Carra
+  // tested by: Mark Norfolk & Patrick Carra
+  // debugged by: Mark Norfolk & Patrick Carra
+  // etc.
+'''
 
 urlpatterns = [
     path('', views.index, name='index'),

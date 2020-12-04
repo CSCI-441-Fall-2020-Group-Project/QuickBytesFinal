@@ -2,7 +2,12 @@ from django.forms import ModelForm, Textarea
 from django import forms 
 from .models import Budget_Table, Schedule_Table, Employee_Table, Restock_Table
 from customer.models import Customer, Discount
-
+'''
+  // written by: Mark Norfolk
+  // tested by: Mark Norfolk
+  // debugged by: Mark Norfolk
+  // etc.
+'''
 class Budget_Table_Form(ModelForm):
     item_Note = forms.CharField(max_length=100, required=False)
     class Meta:

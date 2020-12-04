@@ -1,3 +1,10 @@
+'''
+  // written by: Mila Hose
+  // tested by: Mila Hose
+  // debugged by: Mila Hose
+  // etc.
+'''
+
 from django.db import models
 
 # Create your models here.

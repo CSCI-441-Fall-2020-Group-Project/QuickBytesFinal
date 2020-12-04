@@ -12,7 +12,6 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 app_name='tickets'
 urlpatterns = [
     path('addticketsorder', views.addCustomerOrder.as_view(),),
-    #path('<int:pk>/', views.viewOrder.as_view(), name='viewOrder'),
     path('additem/<int:pk>', views.addItem.as_view(), name='addItem'),
     path('edititem/<int:pk>', views.editItem.as_view(), name='editItem'),
     path('listorders', views.listOrders.as_view(), name='listOrders'),

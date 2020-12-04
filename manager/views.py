@@ -7,7 +7,12 @@ from django.shortcuts import redirect
 from django.urls import reverse
 from . forms import Budget_Table_Form, Schedule_Table_Form, Discount_Form, Employee_Table_Form, Restock_Table_Form
 from django.views.generic.edit import CreateView
-
+'''
+  // written by: Mark Norfolk & Patrick Carra
+  // tested by: Mark Norfolk & Patrick Carra
+  // debugged by: Mark Norfolk & Patrick Carra
+  // etc.
+'''
 # Create your views here.
 def dashboard(request):
     context = {'text': 'Manager Dashboard'}
@@ -33,37 +38,7 @@ def complaints(request):
     template = 'manager/complaints.html'
     return render(request, template, context)
 
-# class create(CreateView):
-#     budget = Budget_Table.objects.all()
-#     model=Budget_Table
-#     template_name='manager/income.html'
-#     form_class = Budget_Table_Form
-
-#     def get_success_url(self):
-#         return reverse('manager:income')
-
-# def income(request):
-#     form = Budget_Table_Form(request.POST)
-#     budget = Budget_Table.objects.all()
-#     if request.method == "POST":
-#         if form.is_valid():
-#             form.save()
-#         else: 
-#             form = Budget_Table_Form()
-        
-#         context = {
-#             'form': form,
-#             'budget_table' : budget,
-#         }
-#         return render(request, 'manager/income.html', context)
-#     else:
-#         context = {
-#             'form': form,
-#             'budget_table' : budget,
-#         }
-#         return render(request, 'manager/income.html', context)
-
-
+#Displays the income table
 class income(CreateView):
     model = Budget_Table
     #fields = ['item_Name', 'item_Category', 'item_Note', 'item_Date', 'item_Amount']
@@ -78,6 +53,7 @@ class income(CreateView):
     def get_success_url(self):
         return reverse('manager:income')
 
+#displays the business table
 class business(CreateView):
     model = Schedule_Table
     form_class = Schedule_Table_Form
@@ -126,20 +102,10 @@ class restock(CreateView):
     def get_success_url(self):
         return reverse('manager:restock')
 
-# def employees(request):
-#     context = {'text': 'Manager Employees'}
-#     template = 'manager/employees.html'
-#     return render(request, template, context) 
-
 def profile(request):
     context = {'text': 'Manager Profile'}
     template = 'manager/managerProfile.html'
     return render(request, template, context) 
-
-# def restock(request):
-#     context = {'text': 'Manager Restock'}
-#     template = 'manager/restock.html'
-#     return render(request, template, context)
 
 def error(request):
     context = {'text': 'Manager Error Page'}

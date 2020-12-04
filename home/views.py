@@ -1,7 +1,7 @@
 '''
-  // written by: Patrick Carra & Kegan Ronholt
-  // tested by: Patrick Carra & Kegan Ronholt
-  // debugged by: Patrick Carra & Kegan Ronholt
+  // written by: Patrick Carra & Kegan Ronholt & Mark Norfolk
+  // tested by: Patrick Carra & Kegan Ronholt & Mark Norfolk
+  // debugged by: Patrick Carra & Kegan Ronholt & Mark Norfolk
 '''
 
 from django.template import loader
